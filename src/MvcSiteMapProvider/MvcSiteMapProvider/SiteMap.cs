@@ -140,17 +140,29 @@ namespace MvcSiteMapProvider
                 // property or provided by a custom URL resolver.
                 if (!isMvcUrl && node.Clickable)
                 {
-                    url = this.siteMapChildStateFactory.CreateUrlKey(node);
+                    url = siteMapChildStateFactory.CreateUrlKey(node);
 
                     // Check for duplicates (including matching or empty host names).
+                    // original doesn't consider hash fragment
+                    //if (this.urlTable
+                    //    .Where(k => string.Equals(k.Key.RootRelativeUrl, url.RootRelativeUrl, StringComparison.OrdinalIgnoreCase))
+                    //    .Where(k => string.IsNullOrEmpty(k.Key.HostName) || string.IsNullOrEmpty(url.HostName) || string.Equals(k.Key.HostName, url.HostName, StringComparison.OrdinalIgnoreCase))
+                    //    .Count() > 0)
+                    //{
+                    //    var absoluteUrl = this.urlPath.ResolveUrl(node.UnresolvedUrl, string.IsNullOrEmpty(node.Protocol) ? Uri.UriSchemeHttp : node.Protocol, node.HostName);
+                    //    throw new InvalidOperationException(string.Format(Resources.Messages.MultipleNodesWithIdenticalUrl, absoluteUrl));
+                    //}
+
+                    // Check for duplicates(including matching or empty host names). Accepts Hash fragment as a differentiator (take in consideration the full Url String when comparing).
                     if (this.urlTable
-                        .Where(k => string.Equals(k.Key.RootRelativeUrl, url.RootRelativeUrl, StringComparison.OrdinalIgnoreCase))
+                        .Where(k => string.Equals(k.Value.UnresolvedUrl, node.UnresolvedUrl, StringComparison.OrdinalIgnoreCase))
                         .Where(k => string.IsNullOrEmpty(k.Key.HostName) || string.IsNullOrEmpty(url.HostName) || string.Equals(k.Key.HostName, url.HostName, StringComparison.OrdinalIgnoreCase))
                         .Count() > 0)
                     {
                         var absoluteUrl = this.urlPath.ResolveUrl(node.UnresolvedUrl, string.IsNullOrEmpty(node.Protocol) ? Uri.UriSchemeHttp : node.Protocol, node.HostName);
                         throw new InvalidOperationException(string.Format(Resources.Messages.MultipleNodesWithIdenticalUrl, absoluteUrl));
                     }
+
                 }
 
                 // Add the key

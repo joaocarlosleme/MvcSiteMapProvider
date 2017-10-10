@@ -1,17 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMusicStore", "MvcMusicStore\MvcMusicStore.csproj", "{C83FE52C-47DD-4433-B34E-9C9D72BBFFA1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcSiteMapProvider", "MvcSiteMapProvider\MvcSiteMapProvider.csproj", "{8625FB9C-BE71-41EF-993D-3C05EA11DEF4}"
-EndProject
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{0EC6B430-52BD-4514-9174-8BE70C3029E3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{EBBE2F83-8F97-4A25-BF8C-C6A43112926A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7DFCAC9C-4458-457F-9F1A-EA7637653D31}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcSiteMapProvider.Tests", "MvcSiteMapProvider.Tests\MvcSiteMapProvider.Tests.csproj", "{406FDBF5-BD07-4BCD-8801-BDC3F22E152F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAsConfiguration", "CodeAsConfiguration", "{FAADDBE0-A4D5-4EEE-A924-FE2582D734A9}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,6 +15,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAsConfiguration", "Code
 		CodeAsConfiguration\Manual_Installation_Instructions.txt = CodeAsConfiguration\Manual_Installation_Instructions.txt
 		CodeAsConfiguration\MvcSiteMapProvider_DI_ReadMe.txt = CodeAsConfiguration\MvcSiteMapProvider_DI_ReadMe.txt
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{DBD0D341-B5A1-43E6-AD01-F89FFE9F1EE4}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Build.bat = ..\..\Build.bat
+		..\..\build\psake.psm1 = ..\..\build\psake.psm1
+		..\..\build\psake_ext.ps1 = ..\..\build\psake_ext.ps1
+		..\..\build\runbuild.ps1 = ..\..\build\runbuild.ps1
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMusicStore", "MvcMusicStore\MvcMusicStore.csproj", "{C83FE52C-47DD-4433-B34E-9C9D72BBFFA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcSiteMapProvider", "MvcSiteMapProvider\MvcSiteMapProvider.csproj", "{8625FB9C-BE71-41EF-993D-3C05EA11DEF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcSiteMapProvider.Tests", "MvcSiteMapProvider.Tests\MvcSiteMapProvider.Tests.csproj", "{406FDBF5-BD07-4BCD-8801-BDC3F22E152F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "CodeAsConfiguration\Shared\Shared.csproj", "{7C763B28-50B2-4201-9BD0-659FC155E5F3}"
 EndProject
@@ -33,14 +43,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninject", "CodeAsConfiguration\Ninject\Ninject.csproj", "{4EC1AAED-4179-4ADC-96BC-18CCCF429B65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windsor", "CodeAsConfiguration\Windsor\Windsor.csproj", "{B559B084-8AFF-457B-9054-373ECC7F979D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{DBD0D341-B5A1-43E6-AD01-F89FFE9F1EE4}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\Build.bat = ..\..\Build.bat
-		..\..\build\psake.psm1 = ..\..\build\psake.psm1
-		..\..\build\psake_ext.ps1 = ..\..\build\psake_ext.ps1
-		..\..\build\runbuild.ps1 = ..\..\build\runbuild.ps1
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleInjector", "CodeAsConfiguration\SimpleInjector\SimpleInjector.csproj", "{029EA3F0-37FA-4A67-AD8E-075226FBC950}"
 EndProject
@@ -104,9 +106,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C83FE52C-47DD-4433-B34E-9C9D72BBFFA1} = {0EC6B430-52BD-4514-9174-8BE70C3029E3}
-		{36B7ABBC-F8D8-4BF1-9E47-31A0DA11B225} = {0EC6B430-52BD-4514-9174-8BE70C3029E3}
 		{8625FB9C-BE71-41EF-993D-3C05EA11DEF4} = {EBBE2F83-8F97-4A25-BF8C-C6A43112926A}
-		{312503CD-BFDA-4A09-8299-2B0C09A1239F} = {EBBE2F83-8F97-4A25-BF8C-C6A43112926A}
 		{406FDBF5-BD07-4BCD-8801-BDC3F22E152F} = {7DFCAC9C-4458-457F-9F1A-EA7637653D31}
 		{7C763B28-50B2-4201-9BD0-659FC155E5F3} = {FAADDBE0-A4D5-4EEE-A924-FE2582D734A9}
 		{2282E09D-96D4-4173-96CA-ED716B72AAB4} = {FAADDBE0-A4D5-4EEE-A924-FE2582D734A9}
@@ -116,6 +116,8 @@ Global
 		{4EC1AAED-4179-4ADC-96BC-18CCCF429B65} = {FAADDBE0-A4D5-4EEE-A924-FE2582D734A9}
 		{B559B084-8AFF-457B-9054-373ECC7F979D} = {FAADDBE0-A4D5-4EEE-A924-FE2582D734A9}
 		{029EA3F0-37FA-4A67-AD8E-075226FBC950} = {FAADDBE0-A4D5-4EEE-A924-FE2582D734A9}
+		{36B7ABBC-F8D8-4BF1-9E47-31A0DA11B225} = {0EC6B430-52BD-4514-9174-8BE70C3029E3}
+		{312503CD-BFDA-4A09-8299-2B0C09A1239F} = {EBBE2F83-8F97-4A25-BF8C-C6A43112926A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
