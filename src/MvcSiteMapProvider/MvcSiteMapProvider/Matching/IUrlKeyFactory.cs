@@ -8,5 +8,6 @@
     {
         IUrlKey Create(ISiteMapNode node);
         IUrlKey Create(string relativeOrAbsoluteUrl, string hostName);
+        IUrlKey Create(string relativeOrAbsoluteUrl, string hostName, string urlAnchorHash);
     }
 }

@@ -23,12 +23,22 @@ namespace MvcSiteMapProvider.Matching
 
         public IUrlKey Create(ISiteMapNode node)
         {
-            return new SiteMapNodeUrlKey(node, this.urlPath);
+            var hash = "";
+            if (node.UnresolvedUrl.Contains("#"))
+                hash = "#" + node.UnresolvedUrl.Split('#')[1];
+
+            
+            return new SiteMapNodeUrlKey(node, this.urlPath, hash);
         }
 
         public IUrlKey Create(string relativeOrAbsoluteUrl, string hostName)
         {
-            return new RequestUrlKey(relativeOrAbsoluteUrl, hostName, this.urlPath);
+            return new RequestUrlKey(relativeOrAbsoluteUrl, hostName, this.urlPath, null);
+        }
+
+        public IUrlKey Create(string relativeOrAbsoluteUrl, string hostName, string urlAnchorHash) 
+        {
+            return new RequestUrlKey(relativeOrAbsoluteUrl, hostName, this.urlPath, urlAnchorHash);
         }
     }
 }

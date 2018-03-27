@@ -27,6 +27,8 @@ namespace MvcSiteMapProvider.Matching
 
         public virtual string RootRelativeUrl { get { return this.rootRelativeUrl; } }
 
+        public string UrlAnchorHash { get; protected set; }
+
         protected virtual void SetUrlValues(string relativeOrAbsoluteUrl)
         {
             if (this.urlPath.IsAbsolutePhysicalPath(relativeOrAbsoluteUrl) || this.urlPath.IsAppRelativePath(relativeOrAbsoluteUrl))
@@ -59,6 +61,7 @@ namespace MvcSiteMapProvider.Matching
                 // String properties
                 hashCode = (hashCode * 397) ^ (this.HostName != null ? this.HostName.GetHashCode() : string.Empty.GetHashCode());
                 hashCode = (hashCode * 397) ^ (this.RootRelativeUrl != null ? this.RootRelativeUrl.GetHashCode() : string.Empty.GetHashCode());
+                hashCode = (hashCode * 397) ^ (this.UrlAnchorHash != null ? this.UrlAnchorHash.GetHashCode() : string.Empty.GetHashCode());
 
                 //// int properties
                 //hashCode = (hashCode * 397) ^ intProperty;

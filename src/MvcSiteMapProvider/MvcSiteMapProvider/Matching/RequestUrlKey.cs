@@ -15,6 +15,17 @@ namespace MvcSiteMapProvider.Matching
             string hostName,
             IUrlPath urlPath
             ) 
+            : this(relativeOrAbsoluteUrl, hostName, urlPath, null)
+        {
+           
+        }
+
+        public RequestUrlKey(
+            string relativeOrAbsoluteUrl,
+            string hostName,
+            IUrlPath urlPath,
+            string urlAnchorHash
+            )
             : base(urlPath)
         {
             if (string.IsNullOrEmpty(relativeOrAbsoluteUrl))
@@ -23,6 +34,9 @@ namespace MvcSiteMapProvider.Matching
             // Host name in absolute URL overrides this one.
             this.hostName = hostName;
             this.SetUrlValues(relativeOrAbsoluteUrl);
+            this.UrlAnchorHash = UrlAnchorHash;
+            
         }
+
     }
 }

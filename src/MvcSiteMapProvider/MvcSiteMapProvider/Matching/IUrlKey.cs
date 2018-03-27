@@ -7,5 +7,7 @@
     {
         string HostName { get; }
         string RootRelativeUrl { get; }
+        string UrlAnchorHash { get; } 
+
     }
 }

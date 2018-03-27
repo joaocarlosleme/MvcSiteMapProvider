@@ -14,7 +14,17 @@ namespace MvcSiteMapProvider.Matching
             ISiteMapNode node,
             IUrlPath urlPath
             ) 
-            : base(urlPath)
+            : this(node, urlPath, null)
+        {
+          
+        }
+
+        public SiteMapNodeUrlKey(
+         ISiteMapNode node,
+         IUrlPath urlPath, 
+         string urlAnchorHash
+         )
+         : base(urlPath)
         {
             if (node == null)
                 throw new ArgumentNullException("node");
@@ -23,6 +33,8 @@ namespace MvcSiteMapProvider.Matching
 
             // Host name in absolute URL overrides this one.
             this.hostName = node.HostName;
+
+            this.UrlAnchorHash = urlAnchorHash;
 
             // Fixes #322 - If using a custom URL resolver, we need to account for the case that
             // the URL will be provided by the resolver instead of specified explicitly.
@@ -39,7 +51,8 @@ namespace MvcSiteMapProvider.Matching
                 this.SetUrlValues(node.Url);
             }
         }
-         
+
+
         private readonly ISiteMapNode node;
 
         public override string HostName 

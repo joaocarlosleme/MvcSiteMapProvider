@@ -732,7 +732,7 @@ namespace MvcSiteMapProvider
             ISiteMapNode node = null;
 
             // Try absolute match with querystring
-            var absoluteMatch = this.siteMapChildStateFactory.CreateUrlKey(relativeUrl, hostName);
+            var absoluteMatch = this.siteMapChildStateFactory.CreateUrlKey(relativeUrl, hostName); // TODO: check and add anchorhash if available. Get from cookie (John / Eric)
             node = this.FindSiteMapNodeFromUrlMatch(absoluteMatch);
 
             // Try absolute match without querystring
@@ -776,6 +776,7 @@ namespace MvcSiteMapProvider
 
         protected virtual ISiteMapNode FindSiteMapNodeFromUrlMatch(IUrlKey urlToMatch)
         {
+            
             if (this.urlTable.ContainsKey(urlToMatch))
             {
                 return this.urlTable[urlToMatch];

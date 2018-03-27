@@ -3,9 +3,9 @@ using MvcSiteMapProvider.Xml;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
-#if !MVC2
-using System.Web.WebPages.Razor;
-#endif
+//#if !MVC2
+//using System.Web.WebPages.Razor;
+//#endif
 
 namespace MvcSiteMapProvider.DI
 {
@@ -17,11 +17,11 @@ namespace MvcSiteMapProvider.DI
     {
         public static void Compose()
         {
-#if !MVC2
-            // Register global namespaces with Razor so we don't have to import them in Web.config
-            WebPageRazorHost.AddGlobalImport("MvcSiteMapProvider.Web.Html");
-            WebPageRazorHost.AddGlobalImport("MvcSiteMapProvider.Web.Html.Models");
-#endif
+//#if !MVC2
+//            // Register global namespaces with Razor so we don't have to import them in Web.config
+//            WebPageRazorHost.AddGlobalImport("MvcSiteMapProvider.Web.Html");
+//            WebPageRazorHost.AddGlobalImport("MvcSiteMapProvider.Web.Html.Models");
+//#endif
 
             // Get the configuration settings
             var settings = new ConfigurationSettings();
@@ -36,25 +36,25 @@ namespace MvcSiteMapProvider.DI
                     validator.ValidateXml(HostingEnvironment.MapPath(settings.SiteMapFileName));
                 }
 
-#if !MVC2
-                // If not using a custom DependencyResolver, we prefer to use IControllerFactory
-                if (DependencyResolver.Current.GetType().FullName.Equals("System.Web.Mvc.DependencyResolver+DefaultDependencyResolver"))
-                {
-#endif
+//#if !MVC2
+//                // If not using a custom DependencyResolver, we prefer to use IControllerFactory
+//                if (DependencyResolver.Current.GetType().FullName.Equals("System.Web.Mvc.DependencyResolver+DefaultDependencyResolver"))
+//                {
+//#endif
                     // Setup the Controller Factory with a decorator that can resolve the internal controllers
                     var currentFactory = ControllerBuilder.Current.GetControllerFactory();
                     ControllerBuilder.Current.SetControllerFactory(
                         new ControllerFactoryDecorator(currentFactory, settings));
-#if !MVC2
-                }
-                else
-                {
-                    // If using a custom IDependencyResolver, decorate it with our IDependencyResolver so we can resolve
-                    // our internal controller.
-                    var currentResolver = DependencyResolver.Current;
-                    DependencyResolver.SetResolver(new DependencyResolverDecorator(currentResolver, settings));
-                }
-#endif
+//#if !MVC2
+//                }
+//                else
+//                {
+//                    // If using a custom IDependencyResolver, decorate it with our IDependencyResolver so we can resolve
+//                    // our internal controller.
+//                    var currentResolver = DependencyResolver.Current;
+//                    DependencyResolver.SetResolver(new DependencyResolverDecorator(currentResolver, settings));
+//                }
+//#endif
 
                 // Set the static loader instance
                 var siteMapLoaderContainer = new SiteMapLoaderContainer(settings);
